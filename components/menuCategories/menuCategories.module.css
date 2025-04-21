@@ -1,78 +1,37 @@
-.items {
+.categoryList {
     margin-top: 35px;
     margin-bottom: 60px;
     display: flex;
-    flex-direction: column;
-    gap: 35px;
-}
-
-.item {
-    display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
-.imageContainer {
-    flex: 1;
-    aspect-ratio: 1/1;
-    position: relative;
-}
-
-.image {
-    border-radius: 50%;
-    border: 3px solid lightgray;
-    object-fit: cover;
-}
-
-.textContainer {
-    flex: 4;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.category {
-    padding: 3px 8px;
+.categoryItem {
+    padding: 10px 25px;
     border-radius: 10px;
-    font-size: 12px;
-    color: white;
-    width: max-content;
+    font-size: 14px;
 }
 
-.category.travel {
-    background-color: #ff7857;
+.categoryItem.style {
+    background-color: #57c4ff31;
 }
 
-.culture {
-    background-color: #ffb14f;
+.categoryItem.fashion {
+    background-color: #da85c731;
 }
 
-.food {
-    background-color: #7fb881;
+.categoryItem.food {
+    background-color: #7fb88133;
 }
 
-.fashion {
-    background-color: #ff7887;
+.categoryItem.travel {
+    background-color: #ff795736;
 }
 
-.coding {
-    background-color: #775aec;
+.categoryItem.culture {
+    background-color: #ffb04f45;
 }
 
-.style {
-    background-color: #789cff;
-}
-
-.postTitle {
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--softTextColor);
-}
-
-.detail {
-    font-size: 12px;
-}
-
-.date {
-    color: gray;
+.categoryItem.coding {
+    background-color: #5e4fff31;
 }
