@@ -8,10 +8,18 @@ const Navbar = () => {
     return (
         <div className={styles.container}>
             <div className={styles.social}>
-                <Image src="/facebook.png" alt="logo" width={24} height={24} />
-                <Image src="/instagram.png" alt="logo" width={24} height={24} />
-                <Image src="/youtube.png" alt="logo" width={24} height={24} />
-                <Image src="/tiktok.png" alt="logo" width={24} height={24} />
+                <Link href="/">
+                    <Image src="/facebook.png" alt="logo" width={24} height={24} />
+                </Link>
+                <Link href="/">
+                    <Image src="/instagram.png" alt="logo" width={24} height={24} />
+                </Link>
+                <Link href="/">
+                    <Image src="/youtube.png" alt="logo" width={24} height={24} />
+                </Link>
+                <Link href="/">
+                    <Image src="/tiktok.png" alt="logo" width={24} height={24} />
+                </Link>
             </div>
             <div className={styles.logo}>YourBlog</div>
             <div className={styles.links}>

@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import styles from './cardList.module.css';
 import Card from '../card/Card';
+import Pagination from '../pagination/Pagination';
 
 const CardList = () => {
     return (
@@ -15,6 +15,7 @@ const CardList = () => {
                     <Card />
                 </div>
                 {/* <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext} /> */}
+                <Pagination />
             </div>
         </div>
     )
