@@ -6,9 +6,19 @@ import ReactQuill from "react-quill-new";
 import 'react-quill-new/dist/quill.snow.css';
 
 const WritePage = () => {
+    const { status } = useSession();
+    
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState("");
     const [title, setTitle] = useState("");
+
+    if (status === "loading") {
+        return <div className={styles.loading}>Loading...</div>;
+    }
+
+    if (status === "authenticated") {
+        window.location.href = "/";
+    }
 
     const handleSubmit = async () => {
         console.log(title)

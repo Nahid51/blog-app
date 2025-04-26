@@ -1,8 +1,18 @@
 "use client"
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import styles from "./loginPage.module.css";
 
 const LoginPage = () => {
+    const { status } = useSession();
+
+    if (status === "loading") {
+        return <div className={styles.loading}>Loading...</div>;
+    }
+
+    if (status === "authenticated") {
+        window.location.href = "/";
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
