@@ -4,10 +4,11 @@ import { useState } from "react";
 import styles from "./writePage.module.css";
 import ReactQuill from "react-quill-new";
 import 'react-quill-new/dist/quill.snow.css';
+import { useSession } from "next-auth/react";
 
 const WritePage = () => {
     const { status } = useSession();
-    
+
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState("");
     const [title, setTitle] = useState("");
@@ -16,13 +17,13 @@ const WritePage = () => {
         return <div className={styles.loading}>Loading...</div>;
     }
 
-    if (status === "authenticated") {
+    if (status === "unauthenticated") {
         window.location.href = "/";
     }
 
     const handleSubmit = async () => {
         console.log(title)
-    };
+    }
 
     return (
         <div className={styles.container}>
