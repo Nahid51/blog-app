@@ -18,7 +18,7 @@ model User {
   // Optional for WebAuthn support
   Authenticator Authenticator[]
   Post          Post[]
-  Comment       Comment[]
+  // Comment       Comment[]
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
 }
@@ -101,15 +101,15 @@ model Post {
   cat       Category  @relation(fields: [catSlug], references: [slug])
   userEmail String
   user      User      @relation(fields: [userEmail], references: [email])
-  comments  Comment[]
+  // comments  Comment[]
 }
 
-model Comment {
-  id        String   @id @default(cuid()) @map("_id") @db.ObjectId
-  createdAt DateTime @default(now())
-  desc      String
-  userEmail String
-  user      User     @relation(fields: [userEmail], references: [email])
-  postSlug  String
-  post      Post     @relation(fields: [postSlug], references: [slug])
-}
+// model Comment {
+//   id        String   @id @default(cuid()) @map("_id") @db.ObjectId
+//   createdAt DateTime @default(now())
+//   desc      String
+//   userEmail String
+//   user      User     @relation(fields: [userEmail], references: [email])
+//   postSlug  String
+//   post      Post     @relation(fields: [postSlug], references: [slug])
+// }

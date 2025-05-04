@@ -2,21 +2,21 @@ import Image from "next/image";
 import styles from "./card.module.css";
 import Link from "next/link";
 
-const Card = () => {
+const Card = ({ item }) => {
     return (
         <div className={styles.container}>
             <div className={styles.imgContainer}>
-                <Image src="/p1.jpeg" alt='photo' fill sizes="100%" priority />
+                <Image src={item?.img} alt='photo' fill sizes="100%" priority />
             </div>
             <div className={styles.textContainer}>
                 <div className={styles.detail}>
-                    <span className={styles.date}>11.12.2024 - </span>
-                    <span className={styles.category}>Culture</span>
+                    <span className={styles.date}>{item?.createdAt} - </span>
+                    <span className={styles.category}>{item?.catSlug.charAt(0).toUpperCase() + item.catSlug.slice(1)}</span>
                 </div>
                 <Link href="/">
-                    <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure, ratione?</h2>
+                    <h2>{item?.title}</h2> 
                 </Link>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid perferendis recusandae maxime molestias eos ipsa, nobis consectetur sequi beatae quasi facilis nisi odio. Blanditiis odit mollitia, nobis odio suscipit repellat!</p>
+                <p>{item?.desc}</p>
                 <Link href="/" className={styles.link}>Read More</Link>
             </div>
         </div>
