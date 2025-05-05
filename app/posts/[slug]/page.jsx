@@ -3,36 +3,50 @@ import styles from "./singlePage.module.css";
 import Menu from "@/components/menu/Menu";
 import Comments from "@/components/comments/Comments";
 
-const SinglePage = () => {
+const getData = async (slug) => {
+    const res = await fetch(`http://localhost:3000/api/posts/${slug}`, { cache: "no-store" });
+    if (!res.ok) {
+        throw new Error("Failed")
+    }
+    return res.json();
+};
+
+const SinglePage = async ({ params }) => {
+    const { slug } = await params;
+    const data = await getData(slug);
+    const markup = { __html: data?.desc };
+
     return (
         <div className={styles.container}>
             <div className={styles.infoContainer}>
                 <div className={styles.textContainer}>
-                    <h2 className={styles.title}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, est.</h2>
+                    <h2 className={styles.title}>{data?.title}</h2>
                     <div className={styles.user}>
-                        <div className={styles.userImgContainer}>
-                            <Image src="/p1.jpeg" alt="photo" fill sizes="100%" priority />
-                        </div>
+                        {data?.user?.image &&
+                            <div className={styles.userImgContainer}>
+                                <Image src={data?.user?.image} alt="photo" fill sizes="100%" priority />
+                            </div>
+                        }
                         <div className={styles.userTextContainer}>
-                            <span className={styles.username}>Kane William</span>
-                            <span className={styles.date}>10.10.2024</span>
+                            <span className={styles.username}>{data?.user?.name}</span>
+                            <span className={styles.date}>{data?.createdAt?.slice(0, 10)}</span>
                         </div>
                     </div>
                 </div>
-                <div className={styles.imgContainer}>
-                    <Image src="/p1.jpeg" alt="photo" fill sizes="100%" priority />
-                </div>
+                {data?.img &&
+                    <div className={styles.imgContainer}>
+                        <Image src={data?.img} alt="photo" fill sizes="100%" priority />
+                    </div>
+                }
             </div>
             <div className={styles.content}>
                 <div className={styles.post}>
-                    <div className={styles.desc}>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam dignissimos tenetur voluptate, nostrum aspernatur quod vero odit quo, at sit numquam dolore quisquam rem. Ducimus modi sit perferendis ipsam dolores.</p>
-                        <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, sunt?</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam dignissimos tenetur voluptate, nostrum aspernatur quod vero odit quo, at sit numquam dolore quisquam rem. Ducimus modi sit perferendis ipsam dolores.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam dignissimos tenetur voluptate, nostrum aspernatur quod vero odit quo, at sit numquam dolore quisquam rem. Ducimus modi sit perferendis ipsam dolores.</p>
-                    </div>
+                    <div
+                        className={styles.desc}
+                        dangerouslySetInnerHTML={markup}
+                    />
                     <div className={styles.comment}>
-                        <Comments />
+                        <Comments postSlug={slug} />
                     </div>
                 </div>
                 <Menu />
