@@ -2,6 +2,7 @@ import { getAuthSession } from "@/utils/auth";
 import prisma from "@/utils/prismaConnect";
 import { NextResponse } from "next/server";
 
+// get the comments
 export const GET = async (req) => {
     const { searchParams } = new URL(req.url);
     const postSlug = searchParams?.get("postSlug");
@@ -20,6 +21,7 @@ export const GET = async (req) => {
     }
 };
 
+// create a comment
 export const POST = async (req) => {
     const session = await getAuthSession();
     if (!session?.user?.email) {

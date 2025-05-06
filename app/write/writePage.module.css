@@ -45,6 +45,10 @@
     left: 50px;
 }
 
+.add input {
+    display: none;
+}
+
 .input {
     padding: 50px;
     font-size: 64px;
