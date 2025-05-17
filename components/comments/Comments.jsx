@@ -20,13 +20,13 @@ const Comments = ({ postSlug }) => {
     const { status } = useSession();
     const [comment, setComment] = useState("");
 
-    const { data, error, isLoading, mutate } = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`, fetcher);
+    const { data, error, isLoading, mutate } = useSWR(`https://blog-app-two-lac-65.vercel.app/api/comments?postSlug=${postSlug}`, fetcher);
 
     if (error) return <div>Failed to load.</div>
     if (isLoading) return <div>Loading...</div>
 
     const handleSubmit = async () => {
-        await fetch("http://localhost:3000/api/comments", {
+        await fetch("https://blog-app-two-lac-65.vercel.app/api/comments", {
             method: "POST",
             body: JSON.stringify({ comment, postSlug })
         });

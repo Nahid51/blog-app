@@ -4,7 +4,7 @@ import Menu from "@/components/menu/Menu";
 import Comments from "@/components/comments/Comments";
 
 const getData = async (slug) => {
-    const res = await fetch(`http://localhost:3000/api/posts/${slug}`, { cache: "no-store" });
+    const res = await fetch(`https://blog-app-two-lac-65.vercel.app/api/posts/${slug}`, { cache: "no-store" });
     if (!res.ok) {
         throw new Error("Failed")
     }

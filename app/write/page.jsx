@@ -35,7 +35,7 @@ const WritePage = () => {
     const slugItem = (slug) => slug.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-").replace(/^-+|-+$/g, "");
 
     const handleSubmit = async () => {
-        await fetch("http://localhost:3000/api/posts", {
+        await fetch("https://blog-app-two-lac-65.vercel.app/api/posts", {
             method: "POST",
             body: JSON.stringify({
                 title,
